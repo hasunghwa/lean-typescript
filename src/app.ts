@@ -190,8 +190,9 @@ async function setupData() {
 function renderChart(data: number[], labels: string[]) {
   const lineChar = $('#lineChart') as HTMLCanvasElement;
   const ctx = lineChar.getContext('2d');
-  Chart.defaults.color = '#f5eaea';
-  Chart.defaults.font.family = 'Exo 2';
+
+  Chart.defaults.global.defaultFontFamily = 'Exo 2';
+  Chart.defaults.global.defaultFontColor = 'white';
   new Chart(ctx, {
     type: 'line',
     data: {
