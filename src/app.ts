@@ -59,7 +59,7 @@ enum CovidStatus {
 }
 
 function fetchCountryInfo(
-  countryCode: string,
+  countryCode: string | undefined,
   status: CovidStatus
 ): Promise<AxiosResponse<ContrySummaryResponse>> {
   // params: confirmed, recovered, deaths
@@ -84,7 +84,7 @@ async function handleListClick(event: Event) {
     event.target instanceof HTMLParagraphElement ||
     event.target instanceof HTMLSpanElement
   ) {
-    selectedId = event.target.parentElement.id;
+    selectedId = event.target.parentElement?.id;
   }
   if (event.target instanceof HTMLLIElement) {
     selectedId = event.target.id;
@@ -137,7 +137,7 @@ function setDeathsList(data: ContrySummaryResponse) {
 }
 
 function clearDeathList() {
-  deathsList.innerHTML = null;
+  deathsList.innerHTML = '';
 }
 
 function setTotalDeathsByCountry(data: ContrySummaryResponse) {
@@ -164,7 +164,7 @@ function setRecoveredList(data: ContrySummaryResponse) {
 }
 
 function clearRecoveredList() {
-  recoveredList.innerHTML = null;
+  recoveredList.innerHTML = '';
 }
 
 function setTotalRecoveredByCountry(data: ContrySummaryResponse) {
